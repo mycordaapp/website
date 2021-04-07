@@ -1,5 +1,5 @@
 layout: page
 title: "Welcome"
-permalink: /welcome/
+permalink: /welcome
 
 Just playing around and adding some content :) 
