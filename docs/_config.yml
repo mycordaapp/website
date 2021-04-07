@@ -1,1 +1,4 @@
 theme: jekyll-theme-minimal
+title: mycorda.app
+description: My super cool description
+logo: https://mycorda.app/images/corda.jpeg
