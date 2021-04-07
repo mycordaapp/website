@@ -1,6 +1,6 @@
 # About
 
-<img src="imagesc/corda.jpeg" width="300"> 
+<img src="images/corda.jpeg" width="300"> 
 
 TODO - write about mycorda.app
 
