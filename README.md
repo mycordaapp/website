@@ -1,5 +1,10 @@
-# mycorda.app
+# MyCorda dot App Website 
 
-A place to find out more abouy building, testing and managing distributed apps on 
-Corda DLT platform.
+Website for the http://github.com/mycordaapp organisation 
+
+## deployment notes 
+
+
+scp -i "mycordaapp.pem" website/build/libs/website.jar:ubuntu@ec2-3-9-175-0.eu-west-2.compute.amazonaws.com
+
 

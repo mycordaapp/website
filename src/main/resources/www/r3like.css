@@ -1,0 +1,57 @@
+
+/**
+*    Note, these styles are based on those used by  R3 website (https://www.r3.com)
+**/
+
+body {
+    color: #53585f;
+    font-size: 15px;
+    line-height: 21px;
+    font-family: Poppins,sans-serif;
+    font-weight: 400;
+}
+
+ h1 {
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 32px;
+    margin: 0 0 20px;
+
+    box-sizing: border-box;
+    display: block;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+    max-width: 95% !important;
+    position: relative;
+ }
+
+ h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 6 0 0 15px;
+
+    box-sizing: border-box;
+    display: block;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+    max-width: 95% !important;
+    position: relative;
+ }
+
+ a {
+    text-decoration-color: rgb(236, 29, 36);
+    text-decoration-line: none;
+    text-decoration-style solid;
+    text-decoration-thickness auto;
+
+    color: rgb(236, 29, 36);
+    zbackground-color rgba(0, 0, 0, 0);
+    cursor: pointer;
+ }

@@ -1,0 +1,119 @@
+buildscript {
+    ext.kotlin_version = '1.3.20'
+    ext.corda_gradle_plugins_version = '3.0.9'
+
+
+    repositories {
+        //mavenLocal()
+        mavenCentral()
+        jcenter()
+
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+
+        // for Spec - http://spekframework.org/docs/latest/
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
+    }
+
+}
+
+plugins {
+    id 'java'
+    id "org.jetbrains.kotlin.jvm" version "1.3.20"
+    id "application"
+
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+group 'mycorda.app.website'
+version '0.0.1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+
+
+    compile group: "org.http4k", name: "http4k-core", version: "3.120.0"
+    compile (group: "org.http4k", name: "http4k-server-jetty", version: "3.120.0") {
+        exclude group: 'org.eclipse.jetty.websocket'
+        exclude group: 'jetty-alpn-conscrypt-server'
+    }
+    compile group: "org.http4k", name: "http4k-client-apache", version: "3.120.0"
+    compile group: "org.http4k", name: "http4k-multipart", version: "3.120.0"
+
+    // web page template engine
+    compile 'com.github.spullara.mustache.java:compiler:0.9.5'
+
+    compile 'org.slf4j:slf4j-api:1.7.25'
+
+
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    //compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
+    //compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.9.8'
+
+    //compile "com.typesafe:config:1.3.2"
+
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'com.natpryce', name: 'hamkrest', version: '1.4.2.2'
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+//
+//    testRuntime ('org.jetbrains.spek:spek-junit-platform-engine:1.1.5') {
+//        exclude group: 'org.junit.platform'
+//        exclude group: 'org.jetbrains.kotlin'
+//    }
+
+    //testCompile 'org.spekframework.spek2:spek-dsl-common:2.0.0-rc.1'
+    testCompile group: "org.http4k", name: "http4k-testing-hamkrest", version: "3.102.1"
+    testCompile ('org.junit.platform:junit-platform-runner:1.0.0')
+}
+
+
+test {
+    useJUnitPlatform {
+        includeEngines 'spek', 'spek2'
+    }
+}
+
+
+mainClassName = "mycorda.app.website.AppKt"
+
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+jar {
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    archiveName = "website.jar"
+    manifest {
+        attributes 'Main-Class': "mycorda.app.website.AppKt"
+    }
+}
